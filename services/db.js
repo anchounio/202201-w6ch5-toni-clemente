@@ -6,10 +6,12 @@ export async function mongoConnect() {
     const user = process.env.DBUSER;
     const password = process.env.DBPASSWD;
     const dbName = process.env.DBNAME;
-    const uri = `mongodb+srv://${user}:${password}@cluster0.dj9ya.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+    const uri = `mongodb+srv://${user}:${password}@cluster0.znp1w.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+
     // const mongoClient = new MongoClient(uri);
     // const mongoConnect = await mongoClient.connect();
     // const dbCoders = mongoConnect.db();
+    console.log(uri);
     const mongooseConnect = await mongoose.connect(uri);
     return mongooseConnect;
 }
@@ -23,18 +25,20 @@ export async function mongoConnect() {
     return result;
 } */
 
-export async function tasksConnect(collection = 'tasks') {
+export async function robotsConnect(collection = 'robots') {
     // const { mongoClient, dbCoders } = await mongoConnect();
     //const booksCollection = dbCoders.collection(collection);
     // return { mongoClient, booksCollection };
     await mongoConnect();
-    const taskSchema = new mongoose.Schema({
-        title: String,
-        responsible: String,
-        isCompleted: Boolean,
+    const robotSchema = new mongoose.Schema({
+        name: String,
+        image: String,
+        speed: Number,
+        stamina: Number,
+        date: Number,
     });
-    taskSchema.methods.algo = function () {};
+    robotSchema.methods.algo = function () {};
 
-    const Task = mongoose.model(collection, taskSchema);
-    return Task;
+    const Robot = mongoose.model(collection, robotSchema);
+    return Robot;
 }

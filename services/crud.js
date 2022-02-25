@@ -1,31 +1,31 @@
 // import { tasksConnect} from './db.js';
 
-export async function getAllTasks(Task) {
+export async function getAllRobots(Robot) {
     /* const { booksCollection, mongoClient } = await booksConnect();
     const cursor = booksCollection.find();
     const result = await cursor.toArray();
     mongoClient.close(); */
-    return await Task.find({});
+    return await Robot.find({});
 }
 
-export async function getTask(id, Task) {
+export async function getRobot(id, Robot) {
     /*  const dbId = ObjectId(id);
     const { booksCollection, mongoClient } = await booksConnect();
     const result = await booksCollection.findOne({ _id: dbId });
     mongoClient.close(); */
-    return await Task.findById(id);
+    return await Robot.findById(id);
 }
 
-export async function insertTask(task, Task) {
+export async function insertRobot(robot, Robot) {
     /* const { booksCollection, mongoClient } = await booksConnect();
     const result = await booksCollection.insertOne(book);
     mongoClient.close(); */
-    const newTask = new Task(task);
-    newTask.algo();
-    return await newTask.save();
+    const newRobot = new Robot(robot);
+    newRobot.algo();
+    return await newRobot.save();
 }
 
-export async function updateTask(id, partialTask, Task) {
+export async function updateRobot(id, partialRobot, Robot) {
     /* const dbId = ObjectId(id);
     const { booksCollection, mongoClient } = await booksConnect();
     const result = await booksCollection.findOneAndUpdate(
@@ -35,13 +35,13 @@ export async function updateTask(id, partialTask, Task) {
         }
     );
     mongoClient.close(); */
-    return await Task.findByIdAndUpdate(id, partialTask, { new: true });
+    return await Robot.findByIdAndUpdate(id, partialRobot, { new: true });
 }
 
-export async function deleteTask(id, Task) {
+export async function deleteRobot(id, Robot) {
     /* const dbId = ObjectId(id);
     const { booksCollection, mongoClient } = await booksConnect();
     const result = await booksCollection.findOneAndDelete({ _id: dbId });
     mongoClient.close(); */
-    return await Task.findByIdAndDelete(id);
+    return await Robot.findByIdAndDelete(id);
 }
