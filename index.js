@@ -6,13 +6,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-// const usersRouter = require('./routes/tasks.js');
-import tasksRouter from './routes/tasks.routes.js';
+// const usersRouter = require('./routes/robots.js');
+import robotsRouter from './routes/robots.routes.js';
 
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use('/tasks', tasksRouter);
+app.use('/robots', robotsRouter);
 
 app.listen(port, () => {
     console.log(`Server listening in http://localhost:${port}`);
