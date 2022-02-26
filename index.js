@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 const app = express();
@@ -11,6 +12,7 @@ import robotsRouter from './routes/robots.routes.js';
 
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(cors());
 
 app.use('/robots', robotsRouter);
 
